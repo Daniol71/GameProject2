@@ -3,6 +3,21 @@ package com.academy;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+
+
+        GameEngine.start();
+        gameLoop();
+
     }
+
+    public static void gameLoop(){
+
+        while(true){
+
+
+
+        }
+
+    }
+
 }
