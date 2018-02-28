@@ -55,5 +55,20 @@ public class GameEngine {
         }
     }
 
-    public static boolean checkCollision 
+    public static boolean checkCollision () {
+        boolean collision = false;
+        for (GameEntity gameEntity : characterList) {
+            if (gameEntity instanceof Obstacles) {
+                for (Point point : gameEntity.pointList) {
+                    for (Point playerPoint : characterList.get(0).pointList) {
+                        if (point.getX()==playerPoint.getX() && point.getY() == playerPoint.getY()) {
+                            collision = true;
+                            return collision;
+                        }
+                    }
+                }
+            }
+        }
+        return collision;
+    }
 }

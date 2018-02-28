@@ -11,14 +11,18 @@ public class Main {
     }
 
     public static void gameLoop() throws InterruptedException {
-int counter = 10;
-        while(true){
-            if(counter%10 == 0) {
+        int counter = 10;
+        while (true) {
+            if (counter % 10 == 0) {
                 GameEngine.addObstacle();
             }
             counter++;
 
             GameEngine.moveObstacles();
+            if (GameEngine.checkCollision()) {
+                System.out.println("Game Over");
+                break;
+            }
             Thread.sleep(100);
             //maybe player moves
             GameEngine.prepareRenderList();
@@ -27,6 +31,7 @@ int counter = 10;
 
 
         }
+
 
     }
 

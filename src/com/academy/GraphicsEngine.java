@@ -15,7 +15,6 @@ public class GraphicsEngine {
 
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
-
     }
 
     public static void render(ArrayList<Point> toRenderList) {
@@ -28,6 +27,7 @@ public class GraphicsEngine {
 
 
     }
+
 
 
 }
