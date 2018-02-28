@@ -15,22 +15,44 @@ public class GameEngine {
 
     public static void start(){
 
-        //Player player = new Player();
-        //characterList.add(player);
-        Level level = new Level();
-        characterList.add(level);
+        characterList.add(new Player());
+        characterList.add(new Level());
         GraphicsEngine.init();
 
+        prepareRenderList(); // maybe överflödig
+
+
+    }
+
+    public static void addObstacle(){
+        characterList.add(new ObstacleLow());
+
+        //// very  ugly, plz refactor if possible ///////
+        ObstacleLow tmp = (ObstacleLow) characterList.get(characterList.size()-1);
+
+        for(int i = 0; i<tmp.pointList.size();i++){
+            toRenderList.add(tmp.pointList.get(i));
+        }
+        ////////////////////////////////////////////////
+    }
+
+    public static void moveObstacles(){
+        for(GameEntity obs: characterList){
+            if(obs instanceof Obstacles){
+                for(Point p: obs.pointList){
+                    p.setX(p.getX()-1);
+                }
+            }
+        }
+    }
+
+    public static void prepareRenderList(){
+        toRenderList.clear();
         for (GameEntity gameEntity : characterList) {
             for (Point p : gameEntity.pointList) {
                 toRenderList.add(p);
             }
         }
-
-        GraphicsEngine.render(toRenderList);
-
-
-
     }
 
 }
