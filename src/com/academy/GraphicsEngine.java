@@ -22,9 +22,7 @@ public class GraphicsEngine {
             terminal.moveCursor(point.getX(), point.getY());
             terminal.applyForegroundColor(point.getColor());
             terminal.putCharacter(point.getPixel());
-
         }
-
 
     }
 
