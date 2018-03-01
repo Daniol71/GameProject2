@@ -31,11 +31,32 @@ public class GameEngine {
     }
 
     public static void addObstacle() {
-        if (counter % 99 == 0)
+        /*if (counter % 99 == 0)
             obstacleList.add(new ObstacleLow());
         if (counter % 37 == 0)
-            obstacleList.add(new ObstacleHigh());
+            obstacleList.add(new ObstacleHigh());*/
+
+        int rnd = (int) (Math.random()*4);
+
+        if (counter % 20 == 0) {
+            switch (rnd) {
+
+                case 0:
+                    break;
+                case 1:
+                    obstacleList.add(new ObstacleLow());
+                    break;
+                case 2:
+                    obstacleList.add(new ObstacleHigh());
+                    break;
+                case 3:
+                    obstacleList.add(new ObstacleLow());
+                    obstacleList.add(new ObstacleHigh());
+                    break;
+            }
+        }
     }
+
 
     public static void removeObstacles() { // removes obstacle when it has passed the behind the player
         //REFACTOR to copy tmpList (maybe?)
