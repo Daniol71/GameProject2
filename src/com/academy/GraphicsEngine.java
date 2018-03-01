@@ -21,10 +21,9 @@ public class GraphicsEngine {
         for (Point point : toRenderList) {
             terminal.moveCursor(point.getX(), point.getY());
             terminal.applyForegroundColor(point.getColor());
+            terminal.applyBackgroundColor(point.getBackGroundColor());
             terminal.putCharacter(point.getPixel());
-
         }
-
 
     }
 

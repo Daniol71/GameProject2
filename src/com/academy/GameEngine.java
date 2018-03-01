@@ -8,6 +8,7 @@ import java.util.Arrays;
 public class GameEngine {
 
     private static int counter = 0;
+    public static int score = 0;
     private static int deltaCounter;
     public static final int COL = 120;
     public static final int ROWS = 35;
@@ -30,16 +31,16 @@ public class GameEngine {
     }
 
     public static void addObstacle() {
-        if(counter % 99 == 0)
+        if (counter % 99 == 0)
             obstacleList.add(new ObstacleLow());
-        if(counter % 37 == 0)
+        if (counter % 37 == 0)
             obstacleList.add(new ObstacleHigh());
     }
 
     public static void removeObstacles() { // removes obstacle when it has passed the behind the player
         //REFACTOR to copy tmpList (maybe?)
         for (int i = 0; i < obstacleList.size(); i++)
-            for (int j = 0; j < obstacleList.get(i).pointList.size() ; j++) {
+            for (int j = 0; j < obstacleList.get(i).pointList.size(); j++) {
                 if (obstacleList.get(i).pointList.get(j).getX() == 0) {
                     obstacleList.remove(obstacleList.get(i));
                     break;
@@ -49,8 +50,8 @@ public class GameEngine {
 
     public static void moveObstacles() {
         for (Obstacles obstacle : obstacleList)
-                for (Point p : obstacle.pointList)
-                    p.setX(p.getX() - 1);
+            for (Point p : obstacle.pointList)
+                p.setX(p.getX() - 1);
     }
 
     public static void moveBullets() {
@@ -92,6 +93,7 @@ public class GameEngine {
                 toRenderList.add(p);
             }
         }
+        addScoreToRenderList();
     }
 
     public static boolean checkPlayerCollision() {
@@ -110,7 +112,7 @@ public class GameEngine {
         }
         return collision;
     }
-    
+
     public static void checkAndRemoveBulletCollision() {
         ArrayList<Obstacles> tempObstaclesList = new ArrayList<>();
         ArrayList<Bullet> tempBulletList = new ArrayList<>();
@@ -126,7 +128,7 @@ public class GameEngine {
                         if (obstaclePoint.getX() == bulletPoint.getX() && obstaclePoint.getY() == bulletPoint.getY()) {
                             tempObstaclesList.remove(obstacle);
                             tempBulletList.remove(bullet);
-
+                            addScore(100);
                             obstacleList = tempObstaclesList;
                             bulletList = tempBulletList;
                             break; // If bullet hits ground and obstacle simultaneously, treat it as a obstacle-bullet collision
@@ -144,7 +146,7 @@ public class GameEngine {
     }
 
     public static void playerAction(Key key) {
-        if(!player.isMoving()) {
+        if (!player.isMoving()) {
             deltaCounter = counter;
             switch (key.getKind()) {
 
@@ -174,15 +176,34 @@ public class GameEngine {
 
     public static void updateCounter() {
         counter++;
+        addScore(1);
         checkPlayerPosition();
     }
 
+    public static void addScore(int addScore) {
+        score += addScore;
+    }
+
     private static void checkPlayerPosition() {
-        if(counter - deltaCounter > 10){
+        if (counter - deltaCounter > 10) {
             player.setPlayerNeutral();
         }
     }
 
+    public static void addScoreToRenderList() {
+        String scoreString = "" + score;
+
+        toRenderList.add(new Point(5, 2, 'S', 7,1));
+        toRenderList.add(new Point(6, 2, 'C', 7,1));
+        toRenderList.add(new Point(7, 2, 'O', 7,1));
+        toRenderList.add(new Point(8, 2, 'R', 7,1));
+        toRenderList.add(new Point(9, 2, 'E', 7,1));
+        toRenderList.add(new Point(10, 2, ':', 7,1));
+        for (int i = 0; i<scoreString.length(); i++) {
+            toRenderList.add(new Point(11+i,2,scoreString.charAt(i),7,1));
+        }
+
+    }
 
 
 }

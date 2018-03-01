@@ -6,13 +6,15 @@ public class Point {
     private int y;
     private char pixel;
     private int color;
+    private int backGroundColor;
 
-    public Point(int x, int y, char pixel, int color){
+    public Point(int x, int y, char pixel, int color,int backGroundColor){
 
         this.x = x;
         this.y = y;
         this.pixel = pixel;
         this.color = color;
+        this.backGroundColor = backGroundColor;
 
     }
 
@@ -46,5 +48,13 @@ public class Point {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public int getBackGroundColor() {
+        return backGroundColor;
+    }
+
+    public void setBackGroundColor(int backGroundColor) {
+        this.backGroundColor = backGroundColor;
     }
 }

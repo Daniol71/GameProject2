@@ -6,13 +6,16 @@ public class Bullet extends GameEntity {
 
     public Bullet() {
 
-        this.pointList.add(new Point(9,GameEngine.ROWS-6,'*',120));
+
+        this.pointList.add(new Point(9,GameEngine.ROWS-6,'*',120,0));
         this.descending = false;
     }
 
     public boolean isDescending() {
+
         return descending;
     }
+
 
     public void setDescending(boolean descending) {
         this.descending = descending;
