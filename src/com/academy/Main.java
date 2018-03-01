@@ -1,6 +1,8 @@
 package com.academy;
 
 
+import com.googlecode.lanterna.input.Key;
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
@@ -15,6 +17,7 @@ public class Main {
     public static void gameLoop() throws InterruptedException {
 
         int counter = 20;
+        Key key;
 
         while (true) {
             if (counter % 20 == 0) {
@@ -22,7 +25,11 @@ public class Main {
             }
             counter++;
 
-            //Implement GameEngine.playerAction() ?
+            key = GraphicsEngine.terminal.readInput();
+
+            if(key != null)
+                GameEngine.playerAction(key);
+
             GameEngine.moveObstacles();
 
             if (GameEngine.checkCollision()) {

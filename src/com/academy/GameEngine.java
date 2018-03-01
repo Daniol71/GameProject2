@@ -1,5 +1,7 @@
 package com.academy;
 
+import com.googlecode.lanterna.input.Key;
+
 import java.util.ArrayList;
 
 public class GameEngine {
@@ -62,9 +64,23 @@ public class GameEngine {
         return collision;
     }
 
+    public static void playerAction(Key key) {
+
+        switch (key.getKind()) {
+
+            case ArrowUp:
+                System.out.println("Player jumped");
+                //playerJump();
+                break;
+
+            default:
+
+                break;
+
+        }
 
 
-
+    }
 
 
 
