@@ -34,7 +34,7 @@ public class GameEngine {
             obstacleList.add(new ObstacleHigh());
     }
 
-    public static void removeObstacles() {
+    public static void removeObstacles() { // removes obstacle when it has passed the behind the player
         //REFACTOR to copy tmpList (maybe?)
         for (int i = 0; i < obstacleList.size(); i++)
             for (int j = 0; j < obstacleList.get(i).pointList.size() ; j++) {
