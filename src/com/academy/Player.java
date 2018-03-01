@@ -4,25 +4,34 @@ import java.util.ArrayList;
 
 public class Player extends GameEntity {
 
-    public Player(){
+    private boolean isMoving = false;
 
-        this.pointList = setAppearance();
+    public Player() {
+
+        setAppearance();
 
     }
 
-    private ArrayList setAppearance(){
+    private void setAppearance() {
 
-        ArrayList<Point> bodyList = new ArrayList<>();
+        this.pointList.add(new Point(8, GameEngine.ROWS - 4, 'o'));
+        this.pointList.add(new Point(6, GameEngine.ROWS - 4, 'o'));
+        this.pointList.add(new Point(7, GameEngine.ROWS - 5, 'o'));
+        this.pointList.add(new Point(7, GameEngine.ROWS - 6, 'o'));
+        this.pointList.add(new Point(8, GameEngine.ROWS - 6, 'o'));
+        this.pointList.add(new Point(6, GameEngine.ROWS - 6, 'o'));
+        this.pointList.add(new Point(7, GameEngine.ROWS - 7, 'o'));
 
-        bodyList.add(new Point(8, GameEngine.ROWS-4, 'o'));
-        bodyList.add(new Point(6, GameEngine.ROWS-4, 'o'));
-        bodyList.add(new Point(7, GameEngine.ROWS-5, 'o'));
-        bodyList.add(new Point(7, GameEngine.ROWS-6, 'o'));
-        bodyList.add(new Point(8, GameEngine.ROWS-6, 'o'));
-        bodyList.add(new Point(6, GameEngine.ROWS-6, 'o'));
-        bodyList.add(new Point(7, GameEngine.ROWS-7, 'o'));
+    }
 
-        return bodyList;
+    public void playerJump() {
+        isMoving = true;
+        for (Point point : pointList) {
+            point.setY(point.getY() - 2);
+        }
+    }
+    public boolean isMoving() {
+        return isMoving;
     }
 
 }

@@ -13,9 +13,11 @@ public class GameEngine {
     public static ArrayList<Obstacles> obstacleList = new ArrayList<>();
     public static ArrayList<Point> toRenderList = new ArrayList<>();
 
+    public static Player player = new Player();
+
     public static void start() {
 
-        characterList.add(new Player());
+        characterList.add(player);
         characterList.add(new Level());
         GraphicsEngine.init();
 
@@ -65,20 +67,20 @@ public class GameEngine {
     }
 
     public static void playerAction(Key key) {
+        if(!player.isMoving()) {
+            switch (key.getKind()) {
 
-        switch (key.getKind()) {
+                case ArrowUp:
+                    System.out.println("Player jumped");
+                    player.playerJump();
+                    break;
 
-            case ArrowUp:
-                System.out.println("Player jumped");
-                //playerJump();
-                break;
+                default:
 
-            default:
+                    break;
 
-                break;
-
+            }
         }
-
 
     }
 
