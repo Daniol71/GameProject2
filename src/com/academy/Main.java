@@ -27,10 +27,12 @@ public class Main {
             if(key != null)
                 GameEngine.playerAction(key);
 
-            GameEngine.moveBullets();
             GameEngine.moveObstacles();
             GameEngine.removeObstacles();
+
+            GameEngine.moveBullets();
             GameEngine.checkAndRemoveBulletCollision();
+
 
             if (GameEngine.checkPlayerCollision()) {
                 System.out.println("Game Over");

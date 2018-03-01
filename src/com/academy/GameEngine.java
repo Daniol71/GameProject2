@@ -54,9 +54,23 @@ public class GameEngine {
     }
 
     public static void moveBullets() {
-        for (Bullet bullet : bulletList)
-            for (Point p : bullet.pointList)
-                p.setX(p.getX() + 1);
+
+        for (Bullet bullet : bulletList) {
+            for (Point p : bullet.pointList) {
+                if (p.getY() <= ROWS - 10) {
+                    bullet.setDescending(true);
+                }
+                if (!bullet.isDescending()) {
+                    p.setX(p.getX() + 3);
+                    p.setY(p.getY() - 1);
+
+                } else if (bullet.isDescending()) {
+                    p.setX(p.getX() + 3);
+                    p.setY(p.getY() + 1);
+                }
+            }
+
+        }
     }
 
     public static void prepareRenderList() {
@@ -108,13 +122,20 @@ public class GameEngine {
             for (Point obstaclePoint : obstacle.pointList) {
                 for (Bullet bullet : bulletList) {
                     for (Point bulletPoint : bullet.pointList) {
+
                         if (obstaclePoint.getX() == bulletPoint.getX() && obstaclePoint.getY() == bulletPoint.getY()) {
                             tempObstaclesList.remove(obstacle);
                             tempBulletList.remove(bullet);
 
                             obstacleList = tempObstaclesList;
                             bulletList = tempBulletList;
+                            break; // If bullet hits ground and obstacle simultaneously, treat it as a obstacle-bullet collision
 
+                        }
+                        else if(bulletPoint.getY() >= ROWS-3 ) {
+                            tempBulletList.remove(bullet);
+                            bulletList = tempBulletList;
+                            
                         }
                     }
                 }
@@ -139,7 +160,8 @@ public class GameEngine {
                     break;
                 case Tab:
                     System.out.println("Player fired");
-                    bulletList.add(new Bullet());
+                    if(bulletList.size() < 2)
+                        bulletList.add(new Bullet());
                     break;
                 default:
 
