@@ -8,12 +8,13 @@ public class Player extends GameEntity {
 
     public Player() {
 
-        setAppearance();
+        setPlayerNeutral();
 
     }
 
-    private void setAppearance() {
+    public void setPlayerNeutral() {
 
+        this.pointList.clear();
         this.pointList.add(new Point(8, GameEngine.ROWS - 4, 'o'));
         this.pointList.add(new Point(6, GameEngine.ROWS - 4, 'o'));
         this.pointList.add(new Point(7, GameEngine.ROWS - 5, 'o'));
@@ -21,7 +22,7 @@ public class Player extends GameEntity {
         this.pointList.add(new Point(8, GameEngine.ROWS - 6, 'o'));
         this.pointList.add(new Point(6, GameEngine.ROWS - 6, 'o'));
         this.pointList.add(new Point(7, GameEngine.ROWS - 7, 'o'));
-
+        isMoving = false;
     }
 
     public void playerJump() {
@@ -30,6 +31,14 @@ public class Player extends GameEntity {
             point.setY(point.getY() - 2);
         }
     }
+
+    public void playerCrouch() {
+        isMoving = true;
+        for (Point point : pointList) {
+            point.setY(point.getY() + 2);
+        }
+    }
+
     public boolean isMoving() {
         return isMoving;
     }

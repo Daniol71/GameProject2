@@ -6,14 +6,18 @@ import java.util.ArrayList;
 
 public class GameEngine {
 
+    private static int counter = 0;
+    private static int deltaCounter;
     public static final int COL = 120;
     public static final int ROWS = 35;
+
 
     public static ArrayList<GameEntity> characterList = new ArrayList<>();
     public static ArrayList<Obstacles> obstacleList = new ArrayList<>();
     public static ArrayList<Point> toRenderList = new ArrayList<>();
 
     public static Player player = new Player();
+
 
     public static void start() {
 
@@ -24,7 +28,8 @@ public class GameEngine {
     }
 
     public static void addObstacle() {
-        obstacleList.add(new ObstacleLow());
+        if(counter % 20 == 0)
+            obstacleList.add(new ObstacleLow());
     }
 
     public static void moveObstacles() {
@@ -68,13 +73,22 @@ public class GameEngine {
 
     public static void playerAction(Key key) {
         if(!player.isMoving()) {
+            deltaCounter = counter;
             switch (key.getKind()) {
 
                 case ArrowUp:
+
                     System.out.println("Player jumped");
                     player.playerJump();
                     break;
 
+                case ArrowDown:
+                    System.out.println("Player crouched");
+                    player.playerCrouch();
+                    break;
+                case Tab:
+                    System.out.println("Player fired");
+                    break;
                 default:
 
                     break;
@@ -82,6 +96,17 @@ public class GameEngine {
             }
         }
 
+    }
+
+    public static void updateCounter() {
+        counter++;
+        checkPlayerPosition();
+    }
+
+    private static void checkPlayerPosition() {
+        if(counter - deltaCounter > 10){
+            player.setPlayerNeutral();
+        }
     }
 
 

@@ -16,14 +16,11 @@ public class Main {
 
     public static void gameLoop() throws InterruptedException {
 
-        int counter = 20;
         Key key;
 
         while (true) {
-            if (counter % 20 == 0) {
-                GameEngine.addObstacle();
-            }
-            counter++;
+            GameEngine.updateCounter();
+            GameEngine.addObstacle();
 
             key = GraphicsEngine.terminal.readInput();
 
@@ -40,7 +37,6 @@ public class Main {
 
             GameEngine.prepareRenderList();
             GraphicsEngine.render(GameEngine.toRenderList);
-
 
         }
 
