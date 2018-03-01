@@ -13,7 +13,7 @@ public class Level extends GameEntity {
 
         for(int i = 0; i < GameEngine.COL; i++){
             for (int j = GameEngine.ROWS-3; j < GameEngine.ROWS; j++) {
-                pointList.add(new Point(i,j, '*',5));
+                pointList.add(new Point(i,j, '*',5,8));
             }
         }
 

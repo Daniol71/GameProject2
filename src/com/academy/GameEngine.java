@@ -171,14 +171,14 @@ public class GameEngine {
     public static void addScoreToRenderList() {
         String scoreString = "" + score;
 
-        toRenderList.add(new Point(5, 2, 'S', 7));
-        toRenderList.add(new Point(6, 2, 'C', 7));
-        toRenderList.add(new Point(7, 2, 'O', 7));
-        toRenderList.add(new Point(8, 2, 'R', 7));
-        toRenderList.add(new Point(9, 2, 'E', 7));
-        toRenderList.add(new Point(10, 2, ':', 7));
+        toRenderList.add(new Point(5, 2, 'S', 7,1));
+        toRenderList.add(new Point(6, 2, 'C', 7,1));
+        toRenderList.add(new Point(7, 2, 'O', 7,1));
+        toRenderList.add(new Point(8, 2, 'R', 7,1));
+        toRenderList.add(new Point(9, 2, 'E', 7,1));
+        toRenderList.add(new Point(10, 2, ':', 7,1));
         for (int i = 0; i<scoreString.length(); i++) {
-            toRenderList.add(new Point(11+i,2,scoreString.charAt(i),7));
+            toRenderList.add(new Point(11+i,2,scoreString.charAt(i),7,1));
         }
 
     }
