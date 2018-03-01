@@ -5,20 +5,18 @@ import java.util.ArrayList;
 public class Level extends GameEntity {
 
     public Level(){
-
-        this.pointList = setAppearance();
+        setAppearance();
 
     }
 
-    private ArrayList setAppearance(){
+    private void setAppearance(){
 
-        ArrayList<Point> bodyList = new ArrayList<>();
         for(int i = 0; i < GameEngine.COL; i++){
             for (int j = GameEngine.ROWS-3; j < GameEngine.ROWS; j++) {
-                bodyList.add(new Point(i,j, '*'));
+                pointList.add(new Point(i,j, '*',5));
             }
         }
-        return bodyList;
+
     }
 
 

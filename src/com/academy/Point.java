@@ -5,12 +5,14 @@ public class Point {
     private int x;
     private int y;
     private char pixel;
+    private int color;
 
-    public Point(int x, int y, char pixel){
+    public Point(int x, int y, char pixel, int color){
 
         this.x = x;
         this.y = y;
         this.pixel = pixel;
+        this.color = color;
 
     }
 
@@ -36,5 +38,13 @@ public class Point {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

@@ -9,10 +9,10 @@ public class ObstacleHigh extends Obstacles{
 
     private void setAppearance(){
 
-        this.pointList.add(new Point(GameEngine.COL+3, GameEngine.ROWS-6, '#'));
-        this.pointList.add(new Point(GameEngine.COL+4, GameEngine.ROWS-6, '#'));
-        this.pointList.add(new Point(GameEngine.COL+3, GameEngine.ROWS-7, '#'));
-        this.pointList.add(new Point(GameEngine.COL+4, GameEngine.ROWS-7, '#'));
+        this.pointList.add(new Point(GameEngine.COL+3, GameEngine.ROWS-6, '#',200));
+        this.pointList.add(new Point(GameEngine.COL+4, GameEngine.ROWS-6, '#',200));
+        this.pointList.add(new Point(GameEngine.COL+3, GameEngine.ROWS-7, '#',200));
+        this.pointList.add(new Point(GameEngine.COL+4, GameEngine.ROWS-7, '#',200));
 
     }
 }
