@@ -14,6 +14,7 @@ public class GameEngine {
 
     public static ArrayList<GameEntity> characterList = new ArrayList<>();
     public static ArrayList<Obstacles> obstacleList = new ArrayList<>();
+    public static ArrayList<Bullet> bulletList = new ArrayList<>();
     public static ArrayList<Point> toRenderList = new ArrayList<>();
 
     public static Player player = new Player();
@@ -65,6 +66,11 @@ public class GameEngine {
                 toRenderList.add(p);
             }
         }
+        for (Bullet bullet : bulletList) {
+            for (Point p : bullet.pointList) {
+                toRenderList.add(p);
+            }
+        }
     }
 
     public static boolean checkCollision() {
@@ -101,6 +107,7 @@ public class GameEngine {
                     break;
                 case Tab:
                     System.out.println("Player fired");
+                    bulletList.add(new Bullet());
                     break;
                 default:
 
