@@ -14,6 +14,8 @@ public class ObstacleLow extends Obstacles {
 
         ArrayList<Point> bodyList = new ArrayList<>();
 
+        //this.pointList.add(new Point(GameEngine.COL+3, GameEngine.ROWS-4, '#'));   //Förslag för att slippa skapa ArrayList bodyList i onödan?
+
         bodyList.add(new Point(GameEngine.COL+3, GameEngine.ROWS-4, '#'));
         bodyList.add(new Point(GameEngine.COL+4, GameEngine.ROWS-4, '#'));
         bodyList.add(new Point(GameEngine.COL+3, GameEngine.ROWS-5, '#'));
