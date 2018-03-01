@@ -3,6 +3,7 @@ package com.academy;
 import com.googlecode.lanterna.input.Key;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GameEngine {
 
@@ -52,6 +53,12 @@ public class GameEngine {
                     p.setX(p.getX() - 1);
     }
 
+    public static void moveBullets() {
+        for (Bullet bullet : bulletList)
+            for (Point p : bullet.pointList)
+                p.setX(p.getX() + 1);
+    }
+
     public static void prepareRenderList() {
 
         toRenderList.clear();
@@ -73,7 +80,7 @@ public class GameEngine {
         }
     }
 
-    public static boolean checkCollision() {
+    public static boolean checkPlayerCollision() {
 
         boolean collision = false;
 
@@ -88,6 +95,31 @@ public class GameEngine {
             }
         }
         return collision;
+    }
+    
+    public static void checkAndRemoveBulletCollision() {
+        ArrayList<Obstacles> tempObstaclesList = new ArrayList<>();
+        ArrayList<Bullet> tempBulletList = new ArrayList<>();
+
+        tempObstaclesList.addAll(obstacleList);
+        tempBulletList.addAll(bulletList);
+
+        for (Obstacles obstacle : obstacleList) {
+            for (Point obstaclePoint : obstacle.pointList) {
+                for (Bullet bullet : bulletList) {
+                    for (Point bulletPoint : bullet.pointList) {
+                        if (obstaclePoint.getX() == bulletPoint.getX() && obstaclePoint.getY() == bulletPoint.getY()) {
+                            tempObstaclesList.remove(obstacle);
+                            tempBulletList.remove(bullet);
+
+                            obstacleList = tempObstaclesList;
+                            bulletList = tempBulletList;
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public static void playerAction(Key key) {
