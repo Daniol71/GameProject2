@@ -120,30 +120,31 @@ public class GameEngine {
         tempObstaclesList.addAll(obstacleList);
         tempBulletList.addAll(bulletList);
 
-        for (Obstacles obstacle : obstacleList) {
-            for (Point obstaclePoint : obstacle.pointList) {
-                for (Bullet bullet : bulletList) {
-                    for (Point bulletPoint : bullet.pointList) {
 
-                        if (obstaclePoint.getX() == bulletPoint.getX() && obstaclePoint.getY() == bulletPoint.getY()) {
-                            tempObstaclesList.remove(obstacle);
-                            tempBulletList.remove(bullet);
-                            addScore(100);
-                            obstacleList = tempObstaclesList;
-                            bulletList = tempBulletList;
-                            break; // If bullet hits ground and obstacle simultaneously, treat it as a obstacle-bullet collision
+            for (Obstacles obstacle : obstacleList) {
+                for (Point obstaclePoint : obstacle.pointList) {
+                    for (Bullet bullet : bulletList) {
+                        for (Point bulletPoint : bullet.pointList) {
 
-                        }
-                        else if(bulletPoint.getY() >= ROWS-3 ) {
-                            tempBulletList.remove(bullet);
-                            bulletList = tempBulletList;
-                            
+                            if (obstaclePoint.getX() == bulletPoint.getX() && obstaclePoint.getY() == bulletPoint.getY()) {
+                                tempObstaclesList.remove(obstacle);
+                                addScore(100);
+                                obstacleList = tempObstaclesList;
+                                break; // If bullet hits ground and obstacle simultaneously, treat it as a obstacle-bullet collision
+
+                            }
+                            else if(bulletPoint.getY() >= ROWS-3 ) {
+                                tempBulletList.remove(bullet);
+                                bulletList = tempBulletList;
+                                break;
+
+                            }
                         }
                     }
                 }
             }
         }
-    }
+
 
     public static void playerAction(Key key) {
         if (!player.isMoving()) {

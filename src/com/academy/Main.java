@@ -27,7 +27,10 @@ public class Main {
             if(key != null)
                 GameEngine.playerAction(key);
 
+
+            GameEngine.checkAndRemoveBulletCollision();
             GameEngine.moveObstacles();
+            GameEngine.checkAndRemoveBulletCollision();
             GameEngine.removeObstacles();
 
             GameEngine.moveBullets();
