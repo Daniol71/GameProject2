@@ -28,6 +28,7 @@ public class Main {
                 GameEngine.playerAction(key);
 
             GameEngine.moveObstacles();
+            GameEngine.removeObstacles();
 
             if (GameEngine.checkCollision()) {
                 System.out.println("Game Over");

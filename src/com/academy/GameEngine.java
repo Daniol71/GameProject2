@@ -28,9 +28,22 @@ public class GameEngine {
     }
 
     public static void addObstacle() {
-        if(counter % 20 == 0)
+        if(counter % 99 == 0)
             obstacleList.add(new ObstacleLow());
+        if(counter % 37 == 0)
+            obstacleList.add(new ObstacleHigh());
     }
+
+    public static void removeObstacles() {
+        //REFACTOR to copy tmpList (maybe?)
+        for (int i = 0; i < obstacleList.size(); i++)
+            for (int j = 0; j < obstacleList.get(i).pointList.size() ; j++) {
+                if (obstacleList.get(i).pointList.get(j).getX() == 0) {
+                    obstacleList.remove(obstacleList.get(i));
+                    break;
+                }
+            }
+    }////////////////////////////////////////
 
     public static void moveObstacles() {
         for (Obstacles obstacle : obstacleList)
