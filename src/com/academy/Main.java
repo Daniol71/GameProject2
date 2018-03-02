@@ -31,7 +31,7 @@ public class Main {
                 GameEngine.playerAction(key);
 
 
-            GameEngine.checkAndRemoveBulletCollision();
+            GameEngine.checkAndRemoveBulletCollision(); // using three times for better accuracy with collision
             GameEngine.moveObstacles();
             GameEngine.checkAndRemoveBulletCollision();
             GameEngine.removeObstacles();
@@ -41,15 +41,13 @@ public class Main {
 
 
             if (GameEngine.checkPlayerCollision()) {
+
                 SoundEngine.soundEffects(5);
-                System.out.println("Game Over");
                 soundEngine.stopAll();
                 GraphicsEngine.showEndScreen();
 
-
-
             }
-            Thread.sleep(50);
+            Thread.sleep(50); // this determines how fast the game runs
 
             GameEngine.prepareRenderList();
             GraphicsEngine.render(GameEngine.toRenderList);

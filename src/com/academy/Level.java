@@ -1,6 +1,5 @@
 package com.academy;
 
-import java.util.ArrayList;
 
 public class Level extends GameEntity {
 

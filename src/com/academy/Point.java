@@ -24,7 +24,7 @@ public class Point {
 
     public void setPixel(char pixel) {
         this.pixel = pixel;
-    }
+    } // for future use
 
     public int getX() {
         return x;
@@ -48,7 +48,7 @@ public class Point {
 
     public void setColor(int color) {
         this.color = color;
-    }
+    } // for future use
 
     public int getBackGroundColor() {
         return backGroundColor;
@@ -56,5 +56,5 @@ public class Point {
 
     public void setBackGroundColor(int backGroundColor) {
         this.backGroundColor = backGroundColor;
-    }
+    } // for future use
 }

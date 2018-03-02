@@ -1,8 +1,6 @@
 package com.academy;
 
 import com.googlecode.lanterna.input.Key;
-
-import java.awt.*;
 import java.util.ArrayList;
 
 public class GameEngine {
@@ -26,14 +24,11 @@ public class GameEngine {
 
         score = 0;
 
-
         characterList.clear();
         obstacleList.clear();
         bulletList.clear();
         characterList.add(player);
         characterList.add(new Level());
-
-
 
     }
 
@@ -80,15 +75,15 @@ public class GameEngine {
 
 
     public static void removeObstacles() { // removes obstacle when it has passed the behind the player
-        //REFACTOR to copy tmpList (maybe?)
+
         for (int i = 0; i < obstacleList.size(); i++)
             for (int j = 0; j < obstacleList.get(i).pointList.size(); j++) {
-                if (obstacleList.get(i).pointList.get(j).getX() == 0) {
+                if (obstacleList.get(i).pointList.get(j).getX() == 0) { // if obstacle reaches X = 0, remove
                     obstacleList.remove(obstacleList.get(i));
                     break;
                 }
             }
-    }////////////////////////////////////////
+    }
 
     public static void moveObstacles() {
         for (Obstacles obstacle : obstacleList)
@@ -116,7 +111,7 @@ public class GameEngine {
         }
     }
 
-    public static void prepareRenderList() {
+    public static void prepareRenderList() { // clears screen and gathers all game entity points and adds them to a list to be rendered for next frame
 
         toRenderList.clear();
 
@@ -158,7 +153,7 @@ public class GameEngine {
         ArrayList<Obstacles> tempObstaclesList = new ArrayList<>();
         ArrayList<Bullet> tempBulletList = new ArrayList<>();
 
-        tempObstaclesList.addAll(obstacleList);
+        tempObstaclesList.addAll(obstacleList); //bullet and obstacle list copied to templists to avoid concurrencymodificationexception
         tempBulletList.addAll(bulletList);
 
 
@@ -170,12 +165,12 @@ public class GameEngine {
                             if (obstaclePoint.getX() == bulletPoint.getX() && obstaclePoint.getY() == bulletPoint.getY()) {
                                 tempObstaclesList.remove(obstacle);
                                 addScore(100);
-                                obstacleList = tempObstaclesList;
-                                break; // If bullet hits ground and obstacle simultaneously, treat it as a obstacle-bullet collision
+                                obstacleList = tempObstaclesList; // remove on obstacle/bullet-collision
+                                break;
 
                             }
                             else if(bulletPoint.getY() >= ROWS-3 ) {
-                                tempBulletList.remove(bullet);
+                                tempBulletList.remove(bullet); // remove on obstacle/ground-collision
                                 bulletList = tempBulletList;
                                 break;
 
@@ -193,26 +188,22 @@ public class GameEngine {
             switch (key.getKind()) {
 
                 case ArrowUp:
-
-                    System.out.println("Player jumped");
                     player.playerJump();
                     break;
 
                 case ArrowDown:
-                    System.out.println("Player crouched");
                     player.playerCrouch();
                     break;
+
                 case Tab:
-                    System.out.println("Player fired");
                     if(bulletList.size() < 2) {
                         bulletList.add(new Bullet());
                         SoundEngine.soundEffects(4);
                     }
                     break;
+
                 default:
-
                     break;
-
             }
         }
 
@@ -228,7 +219,7 @@ public class GameEngine {
         score += addScore;
     }
 
-    private static void checkPlayerPosition() {
+    private static void checkPlayerPosition() { // to neutralize player position after jump or crouch and to animate leg movement
 
         if(!player.isMoving()){
             if(counter % 4 == 0){
@@ -247,15 +238,6 @@ public class GameEngine {
     public static void addScoreToRenderList() {
         String scoreString = "SCORE: " + score;
 
-        /*toRenderList.add(new Point(5, 2, 'S', 7,1));
-        toRenderList.add(new Point(6, 2, 'C', 7,1));
-        toRenderList.add(new Point(7, 2, 'O', 7,1));
-        toRenderList.add(new Point(8, 2, 'R', 7,1));
-        toRenderList.add(new Point(9, 2, 'E', 7,1));
-        toRenderList.add(new Point(10, 2, ':', 7,1));
-        for (int i = 0; i<scoreString.length(); i++) {
-            toRenderList.add(new Point(11+i,2,scoreString.charAt(i),7,1));
-        }*/
         GraphicsEngine.putString(scoreString, 5, 2, 7, 0);
 
     }
