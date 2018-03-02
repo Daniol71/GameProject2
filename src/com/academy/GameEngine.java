@@ -33,6 +33,7 @@ public class GameEngine {
         characterList.add(new Level());
 
 
+
     }
 
     public static void addObstacle() {
@@ -185,8 +186,10 @@ public class GameEngine {
                     break;
                 case Tab:
                     System.out.println("Player fired");
-                    if(bulletList.size() < 2)
+                    if(bulletList.size() < 2) {
                         bulletList.add(new Bullet());
+                        SoundEngine.soundEffects(4);
+                    }
                     break;
                 default:
 

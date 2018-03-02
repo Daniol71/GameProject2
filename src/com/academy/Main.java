@@ -18,8 +18,11 @@ public class Main {
     public static void gameLoop() throws InterruptedException {
 
         Key key;
+        SoundEngine soundEngine = new SoundEngine();
+        soundEngine.play("BackgroundMusic.mp3", true);
 
         while (true) {
+
             GameEngine.updateCounter();
             GameEngine.addObstacle();
 
@@ -39,6 +42,7 @@ public class Main {
 
 
             if (GameEngine.checkPlayerCollision()) {
+                SoundEngine.soundEffects(5);
                 System.out.println("Game Over");
                 GraphicsEngine.showEndScreen();
 

@@ -7,7 +7,6 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -26,9 +25,7 @@ public class SoundEngine {
 
         SoundEngine m = new SoundEngine();
             switch (soundType) {
-                case 1:
-                    m.play("Background - Soviet - Low Vol.mp3", true);
-                    break;
+                
                 case 2:
                     m.playFX("Jump.mp3");
                     break;
