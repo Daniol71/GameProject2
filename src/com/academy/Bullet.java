@@ -7,7 +7,7 @@ public class Bullet extends GameEntity {
     public Bullet() {
 
 
-        this.pointList.add(new Point(9,GameEngine.ROWS-6,'*',3,0));
+        this.pointList.add(new Point(9,GameEngine.ROWS-6,'\u037d',3,0));
         this.descending = false;
     }
 
