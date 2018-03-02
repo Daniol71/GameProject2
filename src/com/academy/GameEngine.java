@@ -40,7 +40,7 @@ public class GameEngine {
     public static void addObstacle() {
 
 
-        int rnd = (int) (Math.random()*4);
+        int rnd = (int) (Math.random()*7);
 
         if (counter % 20 == 0) {
             switch (rnd) {
@@ -57,6 +57,23 @@ public class GameEngine {
                     obstacleList.add(new ObstacleLow());
                     obstacleList.add(new ObstacleHigh());
                     break;
+                case 4:
+                    obstacleList.add(new ObstacleLow());
+                    obstacleList.add(new ObstacleLow(true));
+                    break;
+
+                case 5:
+                    obstacleList.add(new ObstacleHigh());
+                    obstacleList.add(new ObstacleHigh(true));
+                    break;
+
+                case 6:
+                    obstacleList.add(new ObstacleLow());
+                    obstacleList.add(new ObstacleLow(true));
+                    obstacleList.add(new ObstacleHigh());
+                    obstacleList.add(new ObstacleHigh(true));
+                    break;
+
             }
         }
     }
