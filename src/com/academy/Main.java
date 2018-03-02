@@ -40,7 +40,8 @@ public class Main {
             if (GameEngine.checkPlayerCollision()) {
                 System.out.println("Game Over");
                 GraphicsEngine.showEndScreen();
-                break;
+
+
             }
             Thread.sleep(50);
 

@@ -1,6 +1,7 @@
 package com.academy;
 
 import com.googlecode.lanterna.TerminalFacade;
+import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.ArrayList;
@@ -39,6 +40,24 @@ public class GraphicsEngine {
         }
         putString("G A M E  O V E R !", GameEngine.COL/2-10, GameEngine.ROWS/2, 7, 1);
         putString("Press F7 to play again", (GameEngine.COL/2) -12, (GameEngine.ROWS/2) + 7, 1, 3);
+
+        Key key;
+        while( true){
+            key = terminal.readInput();
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if(key!= null && key.getKind() == Key.Kind.F7) {
+                GameEngine.start();
+                try {
+                    Main.gameLoop();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 
