@@ -2,6 +2,7 @@ package com.academy;
 
 import com.googlecode.lanterna.input.Key;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -114,7 +115,6 @@ public class GameEngine {
                 toRenderList.add(p);
             }
         }
-        addScoreToRenderList();
     }
 
     public static boolean checkPlayerCollision() {
@@ -213,9 +213,9 @@ public class GameEngine {
     }
 
     public static void addScoreToRenderList() {
-        String scoreString = "" + score;
+        String scoreString = "SCORE: " + score;
 
-        toRenderList.add(new Point(5, 2, 'S', 7,1));
+        /*toRenderList.add(new Point(5, 2, 'S', 7,1));
         toRenderList.add(new Point(6, 2, 'C', 7,1));
         toRenderList.add(new Point(7, 2, 'O', 7,1));
         toRenderList.add(new Point(8, 2, 'R', 7,1));
@@ -223,7 +223,8 @@ public class GameEngine {
         toRenderList.add(new Point(10, 2, ':', 7,1));
         for (int i = 0; i<scoreString.length(); i++) {
             toRenderList.add(new Point(11+i,2,scoreString.charAt(i),7,1));
-        }
+        }*/
+        GraphicsEngine.putString(scoreString, 5, 2, 7, 1);
 
     }
 
