@@ -3,7 +3,6 @@ package com.academy;
 import com.googlecode.lanterna.input.Key;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GameEngine {
 
@@ -31,10 +30,7 @@ public class GameEngine {
     }
 
     public static void addObstacle() {
-        /*if (counter % 99 == 0)
-            obstacleList.add(new ObstacleLow());
-        if (counter % 37 == 0)
-            obstacleList.add(new ObstacleHigh());*/
+
 
         int rnd = (int) (Math.random()*4);
 
@@ -207,7 +203,17 @@ public class GameEngine {
     }
 
     private static void checkPlayerPosition() {
-        if (counter - deltaCounter > 10) {
+
+        if(!player.isMoving()){
+            if(counter % 4 == 0){
+                player.setPlayerNeutral();
+            }
+            else{
+                player.setPlayerLegsTogether();
+            }
+        }
+
+        if (counter - deltaCounter > 10 && player.isMoving()) {
             player.setPlayerNeutral();
         }
     }
