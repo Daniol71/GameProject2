@@ -40,6 +40,9 @@ public class GraphicsEngine {
         }
         putString("G A M E  O V E R !", GameEngine.COL/2-10, GameEngine.ROWS/2, 7, 1);
         putString("Press F7 to play again", (GameEngine.COL/2) -12, (GameEngine.ROWS/2) + 7, 1, 3);
+        putString("YOUR SCORE: "+GameEngine.score, GameEngine.COL/2-10, GameEngine.ROWS/2+10, 7, 1);
+        putString("HIGHSCORE: "+GameEngine.highScore.getHighScore(), GameEngine.COL/2-10, GameEngine.ROWS/2+12, 7, 1);
+
 
         Key key;
         while( true){
