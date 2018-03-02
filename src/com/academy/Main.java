@@ -9,6 +9,7 @@ public class Main {
 
         // break out the below calls to separate method startGame?
 
+        GraphicsEngine.init();
         GameEngine.start();
         gameLoop();
 

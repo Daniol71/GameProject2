@@ -24,9 +24,12 @@ public class GameEngine {
 
     public static void start() {
 
+        characterList.clear();
+        obstacleList.clear();
+        bulletList.clear();
         characterList.add(player);
         characterList.add(new Level());
-        GraphicsEngine.init();
+
 
     }
 
