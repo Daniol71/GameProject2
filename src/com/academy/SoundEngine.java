@@ -25,7 +25,7 @@ public class SoundEngine {
 
         SoundEngine m = new SoundEngine();
             switch (soundType) {
-                
+
                 case 2:
                     m.playFX("Jump.mp3");
                     break;

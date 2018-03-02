@@ -44,7 +44,9 @@ public class Main {
             if (GameEngine.checkPlayerCollision()) {
                 SoundEngine.soundEffects(5);
                 System.out.println("Game Over");
+                soundEngine.stopAll();
                 GraphicsEngine.showEndScreen();
+
 
 
             }

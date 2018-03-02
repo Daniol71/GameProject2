@@ -26,6 +26,7 @@ public class GameEngine {
 
         score = 0;
 
+
         characterList.clear();
         obstacleList.clear();
         bulletList.clear();
