@@ -28,7 +28,7 @@ public class GraphicsEngine {
         GameEngine.addScoreToRenderList();
     }
 
-    public static void showEndScreen() throws InterruptedException {
+    public static void showEndScreen() {
         terminal.clearScreen();
         for(int y = 0; y < GameEngine.ROWS; y++){
             for(int x = 0; x < GameEngine.COL;x++){
