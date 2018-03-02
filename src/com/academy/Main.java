@@ -7,7 +7,6 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        // break out the below calls to separate method startGame?
 
         GraphicsEngine.init();
         GameEngine.start();
@@ -57,7 +56,6 @@ public class Main {
 
         }
 
-        // if collision, we end up here, so call some game-over screen where you can initialize new game by calling startGame() ?
 
     }
 

@@ -13,25 +13,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SoundEngine {
 
     public static void soundEffects(int soundType) {
-        // 0 Exit program
-        // 1 Play background music
-        // 2 Play jumping sound effect (on repeat)
-        // 3 Play crouching sound effect
-        // 4 Play gunshot sound effect
-        // 5 Play collision sound effect
-        // 6 Pause all tunes, and resume all tunes on pause
-        // 7 Stop all tunes
-        // Default: Play a special effect sound (try smashing ENTER)
+
+
 
         SoundEngine m = new SoundEngine();
             switch (soundType) {
 
-                case 2:
-                    m.playFX("Jump.mp3");
-                    break;
-                case 3:
-                    m.playFX("Crouch.mp3");
-                    break;
+
                 case 4:
                     m.playFX("Gunshot.mp3");
                     break;
