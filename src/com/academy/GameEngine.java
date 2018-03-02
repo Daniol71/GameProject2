@@ -24,6 +24,8 @@ public class GameEngine {
 
     public static void start() {
 
+        score = 0;
+
         characterList.clear();
         obstacleList.clear();
         bulletList.clear();
