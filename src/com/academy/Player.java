@@ -15,13 +15,13 @@ public class Player extends GameEntity {
 
         this.pointList.clear();
 
-        this.pointList.add(new Point(8, GameEngine.ROWS - 4, 'o',10,0));
-        this.pointList.add(new Point(6, GameEngine.ROWS - 4, 'o',10,0));
+        this.pointList.add(new Point(8, GameEngine.ROWS - 4, 'L',6,0));
+        this.pointList.add(new Point(6, GameEngine.ROWS - 4, 'L',6,0));
         this.pointList.add(new Point(7, GameEngine.ROWS - 5, 'o',10,0));
         this.pointList.add(new Point(7, GameEngine.ROWS - 6, 'o',10,0));
         this.pointList.add(new Point(8, GameEngine.ROWS - 6, 'o',10,0));
         this.pointList.add(new Point(6, GameEngine.ROWS - 6, 'o',10,0));
-        this.pointList.add(new Point(7, GameEngine.ROWS - 7, 'Å',7,0));
+        this.pointList.add(new Point(7, GameEngine.ROWS - 7, '\u263a',3,0));
 
         isMoving = false;
 
@@ -32,13 +32,13 @@ public class Player extends GameEntity {
 
         this.pointList.clear();
 
-        this.pointList.add(new Point(7, GameEngine.ROWS - 4, 'o',10,0));
-        this.pointList.add(new Point(7, GameEngine.ROWS - 4, 'o',10,0));
+        this.pointList.add(new Point(7, GameEngine.ROWS - 4, 'L',6,0));
+        this.pointList.add(new Point(7, GameEngine.ROWS - 4, 'L',6,0));
         this.pointList.add(new Point(7, GameEngine.ROWS - 5, 'o',10,0));
         this.pointList.add(new Point(7, GameEngine.ROWS - 6, 'o',10,0));
         this.pointList.add(new Point(8, GameEngine.ROWS - 6, 'o',10,0));
         this.pointList.add(new Point(6, GameEngine.ROWS - 6, 'o',10,0));
-        this.pointList.add(new Point(7, GameEngine.ROWS - 7, 'Å',7,0));
+        this.pointList.add(new Point(7, GameEngine.ROWS - 7, '\u263a',3,0));
 
         isMoving = false;
 
