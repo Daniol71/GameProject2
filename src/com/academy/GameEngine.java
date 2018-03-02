@@ -18,6 +18,8 @@ public class GameEngine {
     public static ArrayList<Point> toRenderList = new ArrayList<>();
 
     public static Player player = new Player();
+    public static HighScore highScore = new HighScore();
+
 
 
     public static void start() {
@@ -29,6 +31,8 @@ public class GameEngine {
         bulletList.clear();
         characterList.add(player);
         characterList.add(new Level());
+        highScore = new HighScore();
+        highScore.readFile();
 
     }
 
@@ -239,8 +243,16 @@ public class GameEngine {
         String scoreString = "SCORE: " + score;
 
         GraphicsEngine.putString(scoreString, 5, 2, 7, 0);
-
+        GraphicsEngine.putString("HIGHSCORE: ", 5, 4, 7, 0);
+        GraphicsEngine.putString(highScore.getHighScore(), 16, 4, 7, 0);
+        checkAndSetHighScore();
     }
 
+    public static void checkAndSetHighScore() {
+        int savedHighScore = Integer.parseInt(highScore.getHighScore());
+        if (score > savedHighScore) {
+            highScore.setHighScore("" + score);
+        }
+    }
 
 }

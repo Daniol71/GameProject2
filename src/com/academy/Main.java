@@ -3,6 +3,11 @@ package com.academy;
 
 import com.googlecode.lanterna.input.Key;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
@@ -44,6 +49,13 @@ public class Main {
 
                 SoundEngine.soundEffects(5);
                 soundEngine.stopAll();
+                try {
+                    PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("HighScore.txt")));
+                    writer.print(""+GameEngine.highScore.getHighScore());
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 GraphicsEngine.showEndScreen();
 
             }
