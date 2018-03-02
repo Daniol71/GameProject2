@@ -235,7 +235,7 @@ public class GameEngine {
         for (int i = 0; i<scoreString.length(); i++) {
             toRenderList.add(new Point(11+i,2,scoreString.charAt(i),7,1));
         }*/
-        GraphicsEngine.putString(scoreString, 5, 2, 7, 1);
+        GraphicsEngine.putString(scoreString, 5, 2, 7, 0);
 
     }
 
